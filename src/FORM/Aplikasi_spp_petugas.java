@@ -5,17 +5,21 @@
  */
 package FORM;
 
+import javax.swing.JOptionPane;
+import koneksi.Petugas;
+
 /**
  *
  * @author LAB 1-17
  */
-public class Aplikasi_spp extends javax.swing.JFrame {
+public class Aplikasi_spp_petugas extends javax.swing.JFrame {
 
     /**
      * Creates new form Aplikasi_spp
      */
-    public Aplikasi_spp() {
+    public Aplikasi_spp_petugas() {
         initComponents();
+       user.setText(Petugas.getUsername().toString());
     }
 
     /**
@@ -30,27 +34,21 @@ public class Aplikasi_spp extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
-        petugas = new javax.swing.JMenu();
+        user = new javax.swing.JMenu();
         Spp = new javax.swing.JMenu();
-        Kelas = new javax.swing.JMenu();
+        petugas = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("APLIKASI SPP");
+        jLabel1.setText("APLIKASI SPP Petugas");
         desktopPane.add(jLabel1);
-        jLabel1.setBounds(150, 100, 170, 50);
+        jLabel1.setBounds(90, 100, 270, 50);
 
-        petugas.setText("Data Petugas");
-        petugas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                petugasMouseClicked(evt);
-            }
-        });
-        menuBar.add(petugas);
+        menuBar.add(user);
 
-        Spp.setText("Spp");
+        Spp.setText("Lihat history pembayaran");
         Spp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 SppMouseClicked(evt);
@@ -58,13 +56,13 @@ public class Aplikasi_spp extends javax.swing.JFrame {
         });
         menuBar.add(Spp);
 
-        Kelas.setText("Kelas");
-        Kelas.addMouseListener(new java.awt.event.MouseAdapter() {
+        petugas.setText("Entri transaksi pembayaran");
+        petugas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                KelasMouseClicked(evt);
+                petugasMouseClicked(evt);
             }
         });
-        menuBar.add(Kelas);
+        menuBar.add(petugas);
 
         setJMenuBar(menuBar);
 
@@ -76,7 +74,7 @@ public class Aplikasi_spp extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
         );
 
         pack();
@@ -100,15 +98,6 @@ public class Aplikasi_spp extends javax.swing.JFrame {
         pp.setVisible(true);
     }//GEN-LAST:event_SppMouseClicked
 
-    private void KelasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KelasMouseClicked
-        // TODO add your handling code here:
-        kelas kl = new kelas();
-        
-        desktopPane.add(kl);
-        
-        kl.setVisible(true);
-    }//GEN-LAST:event_KelasMouseClicked
-
     /**
      * @param args the command line arguments
      */
@@ -126,31 +115,34 @@ public class Aplikasi_spp extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_petugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_petugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_petugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_petugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Aplikasi_spp().setVisible(true);
+                new Aplikasi_spp_petugas().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Kelas;
     private javax.swing.JMenu Spp;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu petugas;
+    private javax.swing.JMenu user;
     // End of variables declaration//GEN-END:variables
 
 }

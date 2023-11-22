@@ -18,6 +18,8 @@ import koneksi.koneksi;
  * @author LAB 1-17
  */
 public class petugas extends javax.swing.JInternalFrame {
+
+  
 void kosong(){
     use.setText("");
     pas.setText("");

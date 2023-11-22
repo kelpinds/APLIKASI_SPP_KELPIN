@@ -5,17 +5,21 @@
  */
 package FORM;
 
+import javax.swing.JOptionPane;
+import koneksi.Petugas;
+
 /**
  *
  * @author LAB 1-17
  */
-public class Aplikasi_spp extends javax.swing.JFrame {
+public class Aplikasi_spp_admin1 extends javax.swing.JFrame {
 
     /**
      * Creates new form Aplikasi_spp
      */
-    public Aplikasi_spp() {
+    public Aplikasi_spp_admin1() {
         initComponents();
+      user.setText(Petugas.getUsername().toString());
     }
 
     /**
@@ -30,6 +34,7 @@ public class Aplikasi_spp extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jLabel1 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
+        user = new javax.swing.JMenu();
         petugas = new javax.swing.JMenu();
         Spp = new javax.swing.JMenu();
         Kelas = new javax.swing.JMenu();
@@ -41,6 +46,8 @@ public class Aplikasi_spp extends javax.swing.JFrame {
         jLabel1.setText("APLIKASI SPP");
         desktopPane.add(jLabel1);
         jLabel1.setBounds(150, 100, 170, 50);
+
+        menuBar.add(user);
 
         petugas.setText("Data Petugas");
         petugas.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -76,7 +83,7 @@ public class Aplikasi_spp extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
         );
 
         pack();
@@ -126,20 +133,23 @@ public class Aplikasi_spp extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_admin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_admin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_admin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_admin1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Aplikasi_spp().setVisible(true);
+                new Aplikasi_spp_admin1().setVisible(true);
             }
         });
     }
@@ -151,6 +161,7 @@ public class Aplikasi_spp extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu petugas;
+    private javax.swing.JMenu user;
     // End of variables declaration//GEN-END:variables
 
 }
