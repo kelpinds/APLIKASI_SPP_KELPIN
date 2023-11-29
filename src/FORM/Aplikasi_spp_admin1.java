@@ -38,6 +38,8 @@ public class Aplikasi_spp_admin1 extends javax.swing.JFrame {
         petugas = new javax.swing.JMenu();
         Spp = new javax.swing.JMenu();
         Kelas = new javax.swing.JMenu();
+        siswa = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,6 +74,22 @@ public class Aplikasi_spp_admin1 extends javax.swing.JFrame {
             }
         });
         menuBar.add(Kelas);
+
+        siswa.setText("Siswa");
+        siswa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                siswaMouseClicked(evt);
+            }
+        });
+        menuBar.add(siswa);
+
+        jMenu1.setText("pembayaran");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
+        menuBar.add(jMenu1);
 
         setJMenuBar(menuBar);
 
@@ -116,6 +134,23 @@ public class Aplikasi_spp_admin1 extends javax.swing.JFrame {
         kl.setVisible(true);
     }//GEN-LAST:event_KelasMouseClicked
 
+    private void siswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siswaMouseClicked
+        // TODO add your handling code here:
+        siswa kl = new siswa();
+        
+        desktopPane.add(kl);
+        
+        kl.setVisible(true);
+    }//GEN-LAST:event_siswaMouseClicked
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        // TODO add your handling code here:
+        pembayaran p = new pembayaran();
+        desktopPane.add(p);
+        
+        p.setVisible(true);
+    }//GEN-LAST:event_jMenu1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -159,8 +194,10 @@ public class Aplikasi_spp_admin1 extends javax.swing.JFrame {
     private javax.swing.JMenu Spp;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu petugas;
+    private javax.swing.JMenu siswa;
     private javax.swing.JMenu user;
     // End of variables declaration//GEN-END:variables
 

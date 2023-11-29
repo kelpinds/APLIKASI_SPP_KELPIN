@@ -5,23 +5,59 @@
  */
 package FORM;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import koneksi.Petugas;
+import koneksi.koneksi;
 
 /**
  *
  * @author LAB 1-17
  */
-public class Aplikasi_spp_petugas extends javax.swing.JFrame {
+public class Aplikasi_spp_siswa extends javax.swing.JFrame {
 
     /**
      * Creates new form Aplikasi_spp
      */
-    public Aplikasi_spp_petugas() {
+      public Aplikasi_spp_siswa() {
         initComponents();
-       user.setText(Petugas.getUsername().toString());
-    }
+      }
+      private void buattabel() {
+        DefaultTableModel kp = (DefaultTableModel) tabel.getModel();
 
+        kp.getDataVector().removeAllElements();
+
+        String sql = "select * from pembayaran";
+
+        koneksi md = new koneksi();
+
+        ResultSet rs = md.ambildata(sql);
+        try {
+            while (rs.next()) {
+               Vector baris = new Vector();
+               baris.add(rs.getInt("id_pembayaran"));
+               baris.add(rs.getInt("id_petugas"));
+               baris.add(rs.getInt("nisn"));
+               baris.add(rs.getDate("tgl_bayar"));
+               baris.add(rs.getString("bulan_dibayar"));
+               baris.add(rs.getString("tahun_dibayar"));
+               baris.add(rs.getInt("id_spp"));
+               baris.add(rs.getInt("jumlah_bayar"));
+               kp.addRow(baris);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Aplikasi_spp_siswa.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+
+        tabel.setModel(kp);
+
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,37 +68,31 @@ public class Aplikasi_spp_petugas extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabel = new javax.swing.JTable();
         menuBar = new javax.swing.JMenuBar();
         user = new javax.swing.JMenu();
-        Spp = new javax.swing.JMenu();
-        petugas = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("APLIKASI SPP Petugas");
-        desktopPane.add(jLabel1);
-        jLabel1.setBounds(90, 100, 270, 50);
+        tabel.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID Pembayaran", "ID Petugas", "NISN", "Tanggal Bayar", "Bulan Bayar", "Tahun Bayar", "ID Spp", "Jumlah Bayar"
+            }
+        ));
+        jScrollPane1.setViewportView(tabel);
+
+        desktopPane.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 10, 580, 402);
 
         menuBar.add(user);
 
-        Spp.setText("Lihat history pembayaran");
-        Spp.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SppMouseClicked(evt);
-            }
-        });
-        menuBar.add(Spp);
-
-        petugas.setText("Entri transaksi pembayaran");
-        petugas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                petugasMouseClicked(evt);
-            }
-        });
-        menuBar.add(petugas);
+        jMenu2.setText("jMenu2");
+        menuBar.add(jMenu2);
 
         setJMenuBar(menuBar);
 
@@ -70,33 +100,17 @@ public class Aplikasi_spp_petugas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void petugasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_petugasMouseClicked
-        // TODO add your handling code here:
-        petugas pg = new petugas();
-        
-        desktopPane.add(pg);
-        
-        pg.setVisible(true);
-    }//GEN-LAST:event_petugasMouseClicked
-
-    private void SppMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SppMouseClicked
-        // TODO add your handling code here:
-        spp pp = new spp();
-        
-        desktopPane.add(pp);
-        
-        pp.setVisible(true);
-    }//GEN-LAST:event_SppMouseClicked
 
     /**
      * @param args the command line arguments
@@ -115,14 +129,18 @@ public class Aplikasi_spp_petugas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp_petugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_siswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp_petugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_siswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp_petugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_siswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Aplikasi_spp_petugas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Aplikasi_spp_siswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -131,17 +149,17 @@ public class Aplikasi_spp_petugas extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Aplikasi_spp_petugas().setVisible(true);
+                new Aplikasi_spp_siswa().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu Spp;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenu petugas;
+    private javax.swing.JTable tabel;
     private javax.swing.JMenu user;
     // End of variables declaration//GEN-END:variables
 

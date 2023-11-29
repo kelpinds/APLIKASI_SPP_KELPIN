@@ -10,27 +10,27 @@ package koneksi;
  * @author LAB 1-17
  */
 public class Siswa {
-static int   nisn;
-static int nis	;
+static String  nisn;
+static String nis	;
 static String nama;	
-static String  id_kelas;
+static int  id_kelas;
 static String  alamat	;
 static String  no_telp;
 static int  id_spp;
 
-    public static int getNisn() {
+    public static String getNisn() {
         return nisn;
     }
 
-    public static void setNisn(int nisn) {
+    public static void setNisn(String nisn) {
         Siswa.nisn = nisn;
     }
 
-    public static int getNis() {
+    public static String getNis() {
         return nis;
     }
 
-    public static void setNis(int nis) {
+    public static void setNis(String nis) {
         Siswa.nis = nis;
     }
 
@@ -42,11 +42,11 @@ static int  id_spp;
         Siswa.nama = nama;
     }
 
-    public static String getId_kelas() {
+    public static int getId_kelas() {
         return id_kelas;
     }
 
-    public static void setId_kelas(String id_kelas) {
+    public static void setId_kelas(int id_kelas) {
         Siswa.id_kelas = id_kelas;
     }
 
